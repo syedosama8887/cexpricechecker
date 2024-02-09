@@ -8,4 +8,4 @@ if __name__ == "__main__":
     price_checker = ExchangePriceChecker(user_exchange)
 
     # Call the main method to execute the functionality
-    price_checker.ma
+    price_checker.main()
