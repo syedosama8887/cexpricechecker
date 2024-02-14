@@ -12,7 +12,9 @@
     <form id="symbolForm">
         <label for="symbolInput">Enter Symbol:</label>
         <input type="text" id="symbolInput" placeholder="Enter symbol (e.g., BTC/USDT)">
-        <button type="button" onclick="getAllSymbols()">Get Symbols</button>
+        <label for="exchangeSelect">Select Exchange:</label>
+        <select id="exchangeSelect"></select>
+        <button type="button" onclick="setExchangeAndFetchSymbols()">Set Exchange and Get Symbols</button>
         <button type="button" onclick="getPrice()">Get Price</button>
     </form>
 
@@ -41,3 +43,49 @@
     <script src="script.js"></script>
 </body>
 </html>
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exchange Price Checker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Exchange Price Checker</h1>
+
+    <form id="symbolForm">
+        <label for="symbolInput">Enter Symbol:</label>
+        <input type="text" id="symbolInput" placeholder="Enter symbol (e.g., BTC/USDT)">
+        <button type="button" onclick="getAllSymbols()">Get Symbols</button>
+        <button type="button" onclick="getPrice()">Get Price</button>
+    </form>
+
+    <h2>Symbols:</h2>
+    <table id="symbolsTable">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Last Price</th>
+            </tr>
+        </thead>
+        <tbody id="symbolsList"></tbody>
+    </table>
+
+    <h2>Result:</h2>
+    <table id="resultTable">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Last Price</th>
+            </tr>
+        </thead>
+        <tbody id="resultList"></tbody>
+    </table>
+
+    <script src="script.js"></script>
+</body>
+</html> -->
