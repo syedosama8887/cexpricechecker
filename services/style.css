@@ -52,6 +52,14 @@ table {
     color: #fff; /* Example text color */
     /* Add any other styles as needed */
 }
+/* ... (your existing CSS) */
+
+.small-window {
+    max-height: 200px; /* Set your desired height */
+    overflow-y: auto;
+}
+
+/* ... (your existing CSS) */
 
 th, td {
     border: 1px solid #ddd;

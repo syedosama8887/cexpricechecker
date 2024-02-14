@@ -46,7 +46,7 @@ function displaySymbolList(symbolList) {
 }
 
 // Ensure this part is present only if you want to manually add options
-const exchanges = ["binance", "bybit", "mexc"];
+const exchanges = ["select","binance", "bybit", "mexc"];
 const select = document.getElementById("exchangeSelect");
 
 exchanges.forEach((exchange) => {
