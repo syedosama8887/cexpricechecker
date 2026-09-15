@@ -1,45 +1,46 @@
 # Exchange Price Checker
 
+A FastAPI service and JavaScript interface for looking up cryptocurrency ticker prices through CCXT.
+
 ## Overview
 
-This project is a simple web application that enables users to check cryptocurrency prices on various exchanges. It utilizes a FastAPI backend for handling requests and fetching data from cryptocurrency exchanges using the [CCXT library](). The frontend is implemented in JavaScript, providing an interactive user interface to get real-time prices.
+The API lists three exchange identifiers, selects an exchange, fetches its symbols and last prices, and looks up the last price of a supplied symbol. The web files are in `services/`.
 
-## Features
+## Tech stack
 
-* Get the last price of a specific symbol on a selected exchange.
-* Retrieve a list of symbols along with their last prices on a chosen exchange.
-* Set the exchange and fetch symbols for easy navigation.
+Python, FastAPI, Uvicorn, CCXT, HTML, CSS, and JavaScript.
 
-## Prerequisites
+## Project structure
 
-Before running the application, ensure you have the following:
+- `main.py` — API routes and application startup.
+- `services/PriceCheckerService.py` — CCXT ticker requests.
+- `services/index.html`, `script.js`, `style.css` — web interface.
+- `requirements.txt` — Python dependencies.
 
-* Python (3.7 or higher)
-* FastAPI (`pip install fastapi`)
-* CCXT library (`pip install ccxt`)
-* Uvicorn (`pip install uvicorn`)
+## Installation and usage
 
-## Web Application
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+uvicorn main:app --reload
+```
 
-* Enter a symbol and select an exchange.
-* Click "Set Exchange and Get Symbols" to fetch symbols.
-* Click "Get Price" to retrieve the last price for the entered symbol.
-* The symbols and results are displayed in a tabular format for easy readability.
+On Windows, activate with `.venv\Scripts\activate`. The API runs at `http://127.0.0.1:8000`; interactive documentation is at `/docs`. Open `services/index.html` in a browser for the interface. Browser requests depend on how the frontend API URL is configured in `services/script.js`.
 
-## Customization
+## API endpoints
 
-* Manually add options to the exchange dropdown by modifying the `exchanges` array in the JavaScript file.
+| Method | Path | Purpose |
+| --- | --- | --- |
+| GET | `/exchanges` | List `binance`, `bybit`, and `mexc`. |
+| POST | `/setexchange/{exchange_id}` | Select the process-wide exchange. |
+| GET | `/getsymbols` | Fetch symbols and last prices for the selected exchange. |
+| POST | `/getprice?symbol=BTC/USDT` | Fetch the last price of a symbol; `symbol` is a query parameter. |
 
-## Notes
+Select an exchange before calling `/getsymbols` or `/getprice`. The selected exchange is held in one global process variable, so simultaneous users can affect each other. Exchange availability and network responses depend on CCXT and the exchange.
 
-* Ensure that your selected exchanges are supported by the CCXT library.
-* Additional error handling and features can be added based on your use case.
+## Environment variables
 
-## Credits
+The current public-price API does not read environment variables. The CCXT service accepts optional API credentials in code, but the API does not supply them. Do not commit credentials or private exchange configuration.
 
-* [CCXT library]()
-* [FastAPI]()
-
-## License
-
-This project is licensed under the [MIT License]().
+No standalone license file was found; this README does not assign a license.
